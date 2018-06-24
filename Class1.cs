@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Class1
+    class MatrixGen
     {
-        
+        private void New(int x, int y)
+        {
+
+        }
+
+        public MatrixGen(int x, int y)
+        {
+            New(x, y);
+        }
     }
 }

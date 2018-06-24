@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            textBox1.Text = String.Format("{0:000.00}", 0.0);
         }
 
         private void button1_Click(object sender, EventArgs e)
