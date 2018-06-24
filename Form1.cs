@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (textBox1.Text == "nya")
+                if (textBox1.Text == "NYA")
                 {
                     label1.Text = textBox1.Text;
                 }
@@ -32,9 +32,41 @@ namespace WindowsFormsApp1
                     throw new Exception("Только NYA!!!!");
                 }
             }
+
+            catch (Exception) when (label1.Text == "nya") // фильтр
+            {
+                label1.Text = "Надо капс";
+            }
             catch (Exception ex)
             {
                 label1.Text = ex.Message;
+            }
+        }
+
+        private void SetClick(object sender, EventArgs e)
+        {
+            FillMatrix MatrixWindow = new FillMatrix();
+            MatrixWindow.ShowDialog();
+
+            //&& !string.IsNullOrEmpty(MatrixWindow.textBox_start.Text
+            if (MatrixWindow.Canceled)
+            {
+                return;
+            }
+
+            Random rnd = new Random();
+            textBox1.Text = rnd.Next(int.Parse(MatrixWindow.textBox_start.Text), int.Parse(MatrixWindow.textBox_end.Text)).ToString();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Выполнить выход?",
+                "Завершение работы",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
             }
         }
     }
